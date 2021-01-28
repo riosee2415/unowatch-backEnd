@@ -1,0 +1,8 @@
+type Query {
+  getMaterialType: [MaterialType!]!
+}
+
+type Mutation {
+  createMaterialType(name: String!): Boolean!
+  deleteMaterialType(id: String!): Boolean!
+}

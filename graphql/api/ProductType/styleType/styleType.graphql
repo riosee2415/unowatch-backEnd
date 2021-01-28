@@ -1,0 +1,8 @@
+type Query {
+  getStyleType: [StyleType!]!
+}
+
+type Mutation {
+  createStyleType(name: String!): Boolean!
+  deleteStyleType(id: String!): Boolean!
+}

@@ -1,0 +1,8 @@
+type Query {
+  getSizeType: [SizeType!]!
+}
+
+type Mutation {
+  createSizeType(name: String!): Boolean!
+  deleteSizeType(id: String!): Boolean!
+}

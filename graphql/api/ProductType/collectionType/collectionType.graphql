@@ -1,0 +1,8 @@
+type Query {
+  getCollectionType: [CollectionType!]!
+}
+
+type Mutation {
+  createCollectionType(name: String!): Boolean!
+  deleteCollectionType(id: String!): Boolean!
+}

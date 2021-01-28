@@ -1,0 +1,8 @@
+type Query {
+  getDialType: [DialType!]!
+}
+
+type Mutation {
+  createDialType(name: String!): Boolean!
+  deleteDialType(id: String!): Boolean!
+}

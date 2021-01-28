@@ -175,3 +175,33 @@ type DirectRequest {
   completedAt: String!
   memo: String!
 }
+
+type StyleType {
+  _id: ID!
+  name: String!
+  isDelete: Boolean!
+}
+
+type SizeType {
+  _id: ID!
+  name: String!
+  isDelete: Boolean!
+}
+
+type MaterialType {
+  _id: ID!
+  name: String!
+  isDelete: Boolean!
+}
+
+type DialType {
+  _id: ID!
+  name: String!
+  isDelete: Boolean!
+}
+
+type CollectionType {
+  _id: ID!
+  name: String!
+  isDelete: Boolean!
+}
