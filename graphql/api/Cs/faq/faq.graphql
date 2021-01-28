@@ -1,0 +1,24 @@
+type Query {
+  getFaq: [Faq!]!
+  getFaqType: [FaqType!]!
+  getFaqDetail(
+    typeName: String!
+    searchValue: String!
+    limit: Int!
+    currentPage: Int!
+  ): [Faq!]!
+  getFaqTotalPage(typeName: String!, searchValue: String!, limit: Int!): Int!
+}
+
+type Mutation {
+  createFaqType(typeName: String!): Boolean!
+  deleteFaqType(id: String!): Boolean!
+  createFaq(
+    question: String!
+    answer: String!
+    sort: Int!
+    type: String!
+  ): Boolean!
+  deleteFaq(id: String!): Boolean!
+  modifyFaq(id: String!, answer: String!): Boolean!
+}

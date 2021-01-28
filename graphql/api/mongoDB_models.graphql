@@ -1,0 +1,177 @@
+type AcceptRecrod {
+  _id: ID!
+  date: String!
+}
+
+type MainBanner {
+  _id: ID!
+  imagePath: String!
+  title: String!
+  content: String!
+  link: String!
+  sort: Int!
+}
+
+type MobileMainBanner {
+  _id: ID!
+  imagePath: String!
+  title: String!
+  content: String!
+  link: String!
+  sort: Int!
+}
+
+type FooterInfo {
+  _id: ID!
+  cheifName: String!
+  businessName: String!
+  businessNumber: String!
+  tel: String!
+  email: String!
+  address: String!
+  privacyOfficer: String!
+  officeHours: String!
+}
+
+# -------------------------------------- FAQ MODEL -------------------------------------
+type Faq {
+  _id: ID!
+  sort: Int!
+  type: String!
+  question: String!
+  answer: String!
+}
+
+type FaqType {
+  _id: ID!
+  typeName: String!
+}
+
+# --------------------------------------------------------------------------------------
+
+# -------------------------------------- USER MODEL -------------------------------------
+
+type UserRight {
+  _id: ID!
+  rightName: String!
+  isAdminLogin: Boolean!
+  sort: Int!
+}
+
+type User {
+  _id: ID!
+  userId: String!
+  userPassword: String!
+  username: String!
+  zoneCode: String!
+  address: String!
+  detailAddress: String!
+  tel: String!
+  mobile: String!
+  email: String!
+  createdAt: String!
+  updatedAt: String!
+  secretCode: String!
+  isDelete: Boolean!
+  deletedAt: String!
+  isExit: Boolean!
+  exitedAt: String!
+  isBlack: Boolean!
+  blackAt: String!
+  right: UserRight!
+  isAgreement1: Boolean!
+  isAgreement2: Boolean!
+  isAgreement3: Boolean!
+  isAgreement4: Boolean!
+}
+
+type BUser {
+  _id: ID!
+  userId: String!
+  userPassword: String!
+  username: String!
+  b_name: String!
+  b_number: String!
+  b_chief: String!
+  b_asignment: Boolean!
+  zoneCode: String!
+  address: String!
+  detailAddress: String!
+  tel: String!
+  mobile: String!
+  email: String!
+  secretCode: String!
+  createdAt: String!
+  updatedAt: String!
+  isDelete: Boolean!
+  deletedAt: String!
+  isExit: Boolean!
+  exitedAt: String!
+  isBlack: Boolean!
+  blackAt: String!
+  isAgreement1: Boolean!
+  isAgreement2: Boolean!
+  isAgreement3: Boolean!
+  isAgreement4: Boolean!
+}
+
+type DefaultUserRight {
+  _id: ID!
+  rightKey: UserRight!
+}
+# --------------------------------------------------------------------------------------
+
+# ------------------------------------ NOTICE MODEL ------------------------------------
+type NoticeBoard {
+  _id: ID!
+  type: String!
+  title: String!
+  description: String!
+  createdAt: String!
+  isDelete: Boolean!
+  deletedAt: String!
+  files: [NoticeFiles!]!
+}
+
+type NoticeBoardType {
+  _id: ID!
+  typeName: String!
+}
+
+type NoticeFiles {
+  _id: ID!
+  originName: String!
+  fileURL: String!
+}
+# --------------------------------------------------------------------------------------
+
+type Popup {
+  _id: ID!
+  imagePath: String!
+  useYn: Boolean!
+  sort: Int!
+}
+
+type EventBoard {
+  _id: ID!
+  title: String!
+  createdAt: String!
+  thumbnail: String!
+  eventTerm: String!
+  description: String!
+  isDelete: Boolean!
+  deletedAt: String!
+  hit: Int!
+}
+
+type DirectRequest {
+  _id: ID!
+  name: String!
+  email: String!
+  mobile: String!
+  description: String!
+  isComplete: Boolean!
+  createdAt: String!
+  completedAt: String!
+  memo: String!
+}

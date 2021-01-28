@@ -1,0 +1,17 @@
+type Query {
+  getUserRight: [UserRight!]!
+  getDefaultUserRight: [DefaultUserRight!]!
+}
+
+type Mutation {
+  modifyRight(id: String!, rightName: String!, isAdminLogin: Boolean!): Boolean!
+  rightSortChange(id: String!, sort: Int!): Boolean!
+  deleteUserRight(id: String!): Boolean!
+  createUserRight(
+    rightName: String!
+    isAdminLogin: Boolean!
+    sort: Int!
+  ): Boolean!
+  modifyDefaultUserRight(id: String!, rightId: String!): Boolean!
+  modifyUserCurrentRight(userId: String!, rightId: String!): Boolean!
+}

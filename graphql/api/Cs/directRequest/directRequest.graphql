@@ -1,0 +1,19 @@
+type Query {
+  getDirectRequest(isComplete: Boolean!): [DirectRequest!]!
+}
+
+type Mutation {
+  createDirectRequest(
+    name: String!
+    email: String!
+    mobile: String!
+    description: String!
+  ): Boolean!
+  modifyDirectRequestComplete(id: String!, memo: String!): Boolean!
+  directRequestByScreen(
+    name: String!
+    email: String!
+    mobile: String!
+    description: String!
+  ): Boolean!
+}

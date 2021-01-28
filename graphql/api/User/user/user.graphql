@@ -1,0 +1,33 @@
+type Query {
+  getUserLoginResultForAdmin(userId: String!, userPassword: String!): Boolean!
+  getUserForId(id: String!, password: String!): User!
+  getAllUser(searchName: String!): [User!]!
+  getUsersByBlack(searchValue: String!): [User!]!
+  getUsersByExit(searchValue: String!): [User!]!
+}
+
+type Mutation {
+  requestSecretId(name: String!, email: String!): Boolean!
+  requestSecretPw(userId: String!, name: String!, email: String!): Boolean!
+  confirmSecret(secret: String!, name: String!, email: String!): String!
+  updateUserPassword(password: String!, userId: String!): Boolean!
+  exitUser(id: String!): Boolean!
+  blackUser(id: String!): Boolean!
+  cancelExitUser(id: String!): Boolean!
+  cancelblackUser(id: String!): Boolean!
+  createUser(
+    userId: String!
+    userPassword: String!
+    username: String!
+    zoneCode: String!
+    address: String!
+    detailAddress: String!
+    tel: String!
+    mobile: String!
+    email: String!
+    isAgreement1: Boolean!
+    isAgreement2: Boolean!
+  ): Boolean!
+  modifyExitUser(id: String!): Boolean!
+  modifyBlackUser(id: String!): Boolean!
+}
