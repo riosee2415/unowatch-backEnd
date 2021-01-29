@@ -205,3 +205,43 @@ type CollectionType {
   name: String!
   isDelete: Boolean!
 }
+
+type Product {
+  _id: ID!
+  thumbnailPath1: String!
+  brand: String!
+  name: String!
+  explain: String!
+  price: String!
+  reference: String!
+  modelCase: String!
+  bezel: String!
+  waterproof: String!
+  movement: String!
+  caliber: String!
+  power: String!
+  bracelet: String!
+  dials: String!
+  certification: String!
+  files: [PFiles!]!
+  thumbnailPath2: String!
+  thumbnailPath3: String!
+  thumbnailPath4: String!
+  thumbnailPath5: String!
+  thumbnailPath6: String!
+  title1: String!
+  desc1: String!
+  title2: String!
+  desc2: String!
+  title3: String!
+  desc3: String!
+  content: String!
+  uTitle: String!
+  isDelete: Boolean!
+  isFestive: Boolean!
+  createdAt: String!
+}
+type PFiles {
+  _id: ID!
+  filePath: String!
+}
