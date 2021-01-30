@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const Teacher = new Schema(
+const Product = new Schema(
   {
     thumbnailPath1: {
       type: String,
@@ -84,10 +84,6 @@ const Teacher = new Schema(
       type: String,
       required: true,
     },
-    thumbnailPath7: {
-      type: String,
-      required: true,
-    },
     title1: {
       type: String,
       required: true,
@@ -146,4 +142,4 @@ const Teacher = new Schema(
   }
 );
 
-export default mongoose.model(`Teacher`, Teacher, `Teacher`);
+export default mongoose.model(`Product`, Product, `Product`);

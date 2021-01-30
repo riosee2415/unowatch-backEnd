@@ -25,7 +25,6 @@ type Mutation {
     thumbnailPath4: String!
     thumbnailPath5: String!
     thumbnailPath6: String!
-    thumbnailPath7: String!
     title1: String!
     desc1: String!
     title2: String!
@@ -52,11 +51,12 @@ type Mutation {
     bracelet: String!
     dials: String!
     certification: String!
+    thumbnailPath2: String!
     thumbnailPath3: String!
     thumbnailPath4: String!
     thumbnailPath5: String!
     thumbnailPath6: String!
-    thumbnailPath7: String!
+    innerImageList: [String!]!
     title1: String!
     desc1: String!
     title2: String!

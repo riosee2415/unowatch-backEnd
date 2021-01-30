@@ -55,11 +55,11 @@ export default {
         bracelet,
         dials,
         certification,
+        thumbnailPath2,
         thumbnailPath3,
         thumbnailPath4,
         thumbnailPath5,
         thumbnailPath6,
-        thumbnailPath7,
         title1,
         desc1,
         title2,
@@ -95,7 +95,6 @@ export default {
               thumbnailPath4,
               thumbnailPath5,
               thumbnailPath6,
-              thumbnailPath7,
               title1,
               desc1,
               title2,
@@ -145,6 +144,7 @@ export default {
         bracelet,
         dials,
         certification,
+        innerImageList,
         thumbnailPath2,
         thumbnailPath3,
         thumbnailPath4,
@@ -196,12 +196,34 @@ export default {
           isDelete: false,
         });
 
+        await Promise.all(
+          innerImageList.map(async (data, idx) => {
+            const innerResult = await PFiles.create({
+              filePath: data,
+              sort: idx + 1,
+            });
+
+            const saveId = mongoose.Types.ObjectId(innerResult._id);
+
+            const product = await Product.findOne({ _id: result._id });
+
+            if (product === null) {
+              console.log("Error!");
+              return;
+            }
+
+            product.files.push(saveId);
+            product.save();
+          })
+        );
+
         return true;
       } catch (e) {
         console.log(e);
         return false;
       }
     },
+
     deleteImageProduct: async (_, args) => {
       const { pId, id } = args;
 
