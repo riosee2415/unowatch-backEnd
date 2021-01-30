@@ -35,6 +35,11 @@ type Mutation {
     desc3: String!
     content: String!
     uTitle: String!
+    styleType: String!
+    sizeType: String!
+    materialType: String!
+    dialType: String!
+    collectionType: String!
   ): Boolean!
 
   createProduct(
@@ -67,6 +72,11 @@ type Mutation {
     desc3: String!
     content: String!
     uTitle: String!
+    styleType: String!
+    sizeType: String!
+    materialType: String!
+    dialType: String!
+    collectionType: String!
   ): Boolean!
   deleteImageProduct(id: String!, pId: String!): Boolean!
   modifyProductImage(id: String!, innerImageList: [String!]!): Boolean!

@@ -237,6 +237,11 @@ type Product {
   desc3: String!
   content: String!
   uTitle: String!
+  styleType: String!
+  sizeType: String!
+  materialType: String!
+  dialType: String!
+  collectionType: String!
   isDelete: Boolean!
   isFestive: Boolean!
   createdAt: String!

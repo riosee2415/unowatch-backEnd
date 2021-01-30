@@ -166,6 +166,11 @@ export default {
         desc3,
         content,
         uTitle,
+        styleType,
+        sizeType,
+        materialType,
+        dialType,
+        collectionType,
       } = args;
 
       try {
@@ -200,6 +205,11 @@ export default {
           desc3,
           content,
           uTitle,
+          styleType,
+          sizeType,
+          materialType,
+          dialType,
+          collectionType,
           createdAt: current,
           isDelete: false,
         });

@@ -136,6 +136,26 @@ const Product = new Schema(
         ref: `PFiles`,
       },
     ],
+    styleType: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: `StyleType`,
+    },
+    sizeType: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: `SizeType`,
+    },
+    materialType: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: `MaterialType`,
+    },
+    dialType: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: `DialType`,
+    },
+    collectionType: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: `CollectionType`,
+    },
   },
   {
     versionKey: false,
