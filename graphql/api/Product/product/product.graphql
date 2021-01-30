@@ -21,6 +21,8 @@ type Mutation {
     bracelet: String!
     dials: String!
     certification: String!
+    innerImageList: [String!]!
+    thumbnailPath2: String!
     thumbnailPath3: String!
     thumbnailPath4: String!
     thumbnailPath5: String!

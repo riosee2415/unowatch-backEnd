@@ -13,6 +13,9 @@ export default {
           name: {
             $regex: `.*${searchName}.*`,
           },
+        }).populate({
+          model: PFiles,
+          path: "files",
         });
 
         return result;
@@ -26,7 +29,10 @@ export default {
       const { id } = args;
 
       try {
-        const result = await Product.findOne({ _id: id });
+        const result = await Product.findOne({ _id: id }).populate({
+          model: PFiles,
+          path: "files",
+        });
 
         return result;
       } catch (e) {
@@ -60,6 +66,7 @@ export default {
         thumbnailPath4,
         thumbnailPath5,
         thumbnailPath6,
+        innerImageList,
         title1,
         desc1,
         title2,
@@ -95,6 +102,7 @@ export default {
               thumbnailPath4,
               thumbnailPath5,
               thumbnailPath6,
+              innerImageList,
               title1,
               desc1,
               title2,
