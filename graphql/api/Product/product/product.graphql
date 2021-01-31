@@ -1,3 +1,8 @@
+type FileReturn {
+  _id: String!
+  filePath: String!
+}
+
 type Query {
   getProduct(searchName: String!): [Product!]!
   getOneProduct(id: String!): Product!
@@ -81,4 +86,6 @@ type Mutation {
   deleteImageProduct(id: String!, pId: String!): Boolean!
   modifyProductImage(id: String!, innerImageList: [String!]!): Boolean!
   deleteProduct(id: String!): Boolean!
+  pushInnerImage(pid: String!, path: String!): FileReturn!
+  sliceInnerImage(pid: String!, fileId: String!): Boolean!
 }

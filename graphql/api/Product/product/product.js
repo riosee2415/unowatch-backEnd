@@ -294,5 +294,69 @@ export default {
         return false;
       }
     },
+
+    pushInnerImage: async (_, args) => {
+      const { pid, path } = args;
+
+      try {
+        const parent = await Product.findOne({ _id: pid });
+
+        const fileResult = await PFiles.create({
+          filePath: path,
+        });
+
+        const obFileId = mongoose.Types.ObjectId(fileResult._id);
+
+        parent.files.push(obFileId);
+        parent.save();
+
+        console.log(fileResult._id);
+        console.log(path);
+
+        return {
+          _id: fileResult._id,
+          filePath: path,
+        };
+      } catch (e) {
+        console.log(e);
+
+        return {
+          _id: "none",
+          filePath: "none",
+        };
+      }
+    },
+
+    sliceInnerImage: async (_, args) => {
+      const { pid, fileId } = args;
+
+      console.log(fileId);
+
+      try {
+        const parent = await Product.findOne({ _id: pid });
+
+        let nextFiles;
+
+        await Promise.all((nextFiles = parent.files.map((data) => data)));
+
+        await Promise.all(
+          (nextFiles = nextFiles.filter((data) => String(data) !== fileId))
+        );
+
+        await Product.updateOne(
+          { _id: pid },
+          {
+            $set: {
+              files: nextFiles,
+            },
+          }
+        );
+
+        return true;
+      } catch (e) {
+        console.log(e);
+        return false;
+      }
+    },
   },
 };
