@@ -66,7 +66,6 @@ export default {
         thumbnailPath4,
         thumbnailPath5,
         thumbnailPath6,
-        innerImageList,
         title1,
         desc1,
         title2,
@@ -75,6 +74,11 @@ export default {
         desc3,
         content,
         uTitle,
+        styleType,
+        sizeType,
+        materialType,
+        dialType,
+        collectionType,
       } = args;
 
       try {
@@ -102,7 +106,6 @@ export default {
               thumbnailPath4,
               thumbnailPath5,
               thumbnailPath6,
-              innerImageList,
               title1,
               desc1,
               title2,
@@ -111,6 +114,11 @@ export default {
               desc3,
               content,
               uTitle,
+              styleType,
+              sizeType,
+              materialType,
+              dialType,
+              collectionType,
             },
           }
         );
