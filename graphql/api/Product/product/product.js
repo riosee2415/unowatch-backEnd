@@ -25,6 +25,22 @@ export default {
       }
     },
 
+    getProductBySelection: async (_, args) => {
+      try {
+        const result = await Product.find({
+          isFestive: "페스티브",
+        }).populate({
+          model: PFiles,
+          path: "files",
+        });
+
+        return result;
+      } catch (e) {
+        console.log(e);
+        return [];
+      }
+    },
+
     getOneProduct: async (_, args) => {
       const { id } = args;
 
