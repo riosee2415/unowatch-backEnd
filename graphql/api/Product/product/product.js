@@ -98,6 +98,7 @@ export default {
         thumbnailPath4,
         thumbnailPath5,
         thumbnailPath6,
+        backImg,
         title1,
         desc1,
         title2,
@@ -114,7 +115,6 @@ export default {
         videoLink,
         isNew2020,
         isFestive,
-        backgroundType,
       } = args;
 
       try {
@@ -142,6 +142,7 @@ export default {
               thumbnailPath4,
               thumbnailPath5,
               thumbnailPath6,
+              backImg,
               title1,
               desc1,
               title2,
@@ -158,7 +159,6 @@ export default {
               videoLink,
               isNew2020,
               isFestive,
-              backgroundType,
             },
           }
         );
@@ -206,6 +206,7 @@ export default {
         thumbnailPath4,
         thumbnailPath5,
         thumbnailPath6,
+        backImg,
         title1,
         desc1,
         title2,
@@ -222,7 +223,6 @@ export default {
         videoLink,
         isNew2020,
         isFestive,
-        backgroundType,
       } = args;
 
       try {
@@ -249,6 +249,7 @@ export default {
           thumbnailPath4,
           thumbnailPath5,
           thumbnailPath6,
+          backImg,
           title1,
           desc1,
           title2,
@@ -265,7 +266,6 @@ export default {
           videoLink,
           isNew2020,
           isFestive,
-          backgroundType,
           createdAt: current,
           isDelete: false,
         });

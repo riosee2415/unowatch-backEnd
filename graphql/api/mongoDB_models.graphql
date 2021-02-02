@@ -206,13 +206,6 @@ type CollectionType {
   isDelete: Boolean!
 }
 
-type BackgroundType {
-  _id: ID!
-  name: String!
-  imagePath: String!
-  isDelete: Boolean!
-}
-
 type Product {
   _id: ID!
   thumbnailPath1: String!
@@ -249,6 +242,7 @@ type Product {
   materialType: String!
   dialType: String!
   collectionType: String!
+  backImg: String!
   videoLink: String!
   isDelete: Boolean!
   isFestive: String!
