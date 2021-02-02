@@ -164,6 +164,36 @@ export default {
       }
     },
 
+    getProductByNew: async (_, args) => {
+      try {
+        const result = await Product.find({
+          isNew2020: "신상",
+        }).populate({
+          model: PFiles,
+          path: "files",
+        });
+
+        return result;
+      } catch (e) {
+        console.log(e);
+        return [];
+      }
+    },
+
+    getProductDetail: async (_, args) => {
+      try {
+        const result = await Product.find().populate({
+          model: PFiles,
+          path: "files",
+        });
+
+        return result;
+      } catch (e) {
+        console.log(e);
+        return [];
+      }
+    },
+
     getOneProduct: async (_, args) => {
       const { id } = args;
 
@@ -205,6 +235,7 @@ export default {
         thumbnailPath4,
         thumbnailPath5,
         thumbnailPath6,
+        backImg,
         title1,
         desc1,
         title2,
@@ -221,7 +252,6 @@ export default {
         videoLink,
         isNew2020,
         isFestive,
-        backgroundType,
       } = args;
 
       try {
@@ -249,6 +279,7 @@ export default {
               thumbnailPath4,
               thumbnailPath5,
               thumbnailPath6,
+              backImg,
               title1,
               desc1,
               title2,
@@ -265,7 +296,6 @@ export default {
               videoLink,
               isNew2020,
               isFestive,
-              backgroundType,
             },
           }
         );
@@ -313,6 +343,7 @@ export default {
         thumbnailPath4,
         thumbnailPath5,
         thumbnailPath6,
+        backImg,
         title1,
         desc1,
         title2,
@@ -329,7 +360,6 @@ export default {
         videoLink,
         isNew2020,
         isFestive,
-        backgroundType,
       } = args;
 
       try {
@@ -356,6 +386,7 @@ export default {
           thumbnailPath4,
           thumbnailPath5,
           thumbnailPath6,
+          backImg,
           title1,
           desc1,
           title2,
@@ -372,7 +403,6 @@ export default {
           videoLink,
           isNew2020,
           isFestive,
-          backgroundType,
           createdAt: current,
           isDelete: false,
         });
