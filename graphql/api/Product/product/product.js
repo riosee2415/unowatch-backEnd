@@ -79,6 +79,9 @@ export default {
         materialType,
         dialType,
         collectionType,
+        videoLink,
+        isNew2020,
+        isFestive,
       } = args;
 
       try {
@@ -119,6 +122,9 @@ export default {
               materialType,
               dialType,
               collectionType,
+              videoLink,
+              isNew2020,
+              isFestive,
             },
           }
         );
@@ -179,6 +185,9 @@ export default {
         materialType,
         dialType,
         collectionType,
+        videoLink,
+        isNew2020,
+        isFestive,
       } = args;
 
       try {
@@ -218,6 +227,9 @@ export default {
           materialType,
           dialType,
           collectionType,
+          videoLink,
+          isNew2020,
+          isFestive,
           createdAt: current,
           isDelete: false,
         });

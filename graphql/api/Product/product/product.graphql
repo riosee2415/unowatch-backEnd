@@ -44,6 +44,9 @@ type Mutation {
     materialType: String!
     dialType: String!
     collectionType: String!
+    isNew2020: String!
+    isFestive: String!
+    videoLink: String!
   ): Boolean!
 
   createProduct(
@@ -81,6 +84,9 @@ type Mutation {
     materialType: String!
     dialType: String!
     collectionType: String!
+    isNew2020: String!
+    isFestive: String!
+    videoLink: String!
   ): Boolean!
   deleteImageProduct(id: String!, pId: String!): Boolean!
   modifyProductImage(id: String!, innerImageList: [String!]!): Boolean!

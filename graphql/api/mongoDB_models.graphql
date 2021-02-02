@@ -206,6 +206,13 @@ type CollectionType {
   isDelete: Boolean!
 }
 
+type BackgroundType {
+  _id: ID!
+  name: String!
+  imagePath: String!
+  isDelete: Boolean!
+}
+
 type Product {
   _id: ID!
   thumbnailPath1: String!
@@ -242,8 +249,10 @@ type Product {
   materialType: String!
   dialType: String!
   collectionType: String!
+  videoLink: String!
   isDelete: Boolean!
-  isFestive: Boolean!
+  isFestive: String!
+  isNew2020: String!
   createdAt: String!
 }
 type PFiles {

@@ -116,15 +116,22 @@ const Product = new Schema(
       type: String,
       required: true,
     },
-    isDelete: {
+    videoLink: {
       type: String,
       required: true,
-      default: false,
     },
-    isFestive: {
+    isDelete: {
       type: Boolean,
       required: true,
       default: false,
+    },
+    isNew2020: {
+      type: String,
+      required: true,
+    },
+    isFestive: {
+      type: String,
+      required: true,
     },
     createdAt: {
       type: String,
