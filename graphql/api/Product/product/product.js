@@ -41,6 +41,22 @@ export default {
       }
     },
 
+    getProductByNew: async (_, args) => {
+      try {
+        const result = await Product.find({
+          isNew2020: "신상",
+        }).populate({
+          model: PFiles,
+          path: "files",
+        });
+
+        return result;
+      } catch (e) {
+        console.log(e);
+        return [];
+      }
+    },
+
     getOneProduct: async (_, args) => {
       const { id } = args;
 
