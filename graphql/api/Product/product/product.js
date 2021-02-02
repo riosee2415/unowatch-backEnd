@@ -98,6 +98,7 @@ export default {
         videoLink,
         isNew2020,
         isFestive,
+        backgroundType,
       } = args;
 
       try {
@@ -141,6 +142,7 @@ export default {
               videoLink,
               isNew2020,
               isFestive,
+              backgroundType,
             },
           }
         );
@@ -204,6 +206,7 @@ export default {
         videoLink,
         isNew2020,
         isFestive,
+        backgroundType,
       } = args;
 
       try {
@@ -246,6 +249,7 @@ export default {
           videoLink,
           isNew2020,
           isFestive,
+          backgroundType,
           createdAt: current,
           isDelete: false,
         });
