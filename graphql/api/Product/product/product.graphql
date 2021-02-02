@@ -5,6 +5,24 @@ type FileReturn {
 
 type Query {
   getProduct(searchName: String!): [Product!]!
+  getProductAll(
+    style: [String]
+    size: [String]
+    material: [String]
+    dial: [String]
+    collection: [String]
+    limit: Int!
+    currentPage: Int!
+  ): [Product!]!
+  getProductAllTotalPage(
+    style: [String]
+    size: [String]
+    material: [String]
+    dial: [String]
+    collection: [String]
+    limit: Int!
+    currentPage: Int!
+  ): Int!
   getProductBySelection: [Product!]!
   getOneProduct(id: String!): Product!
 }

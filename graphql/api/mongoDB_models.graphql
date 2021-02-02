@@ -244,11 +244,11 @@ type Product {
   desc3: String!
   content: String!
   uTitle: String!
-  styleType: String!
-  sizeType: String!
-  materialType: String!
-  dialType: String!
-  collectionType: String!
+  styleType: StyleType!
+  sizeType: SizeType!
+  materialType: MaterialType!
+  dialType: DialType!
+  collectionType: CollectionType!
   videoLink: String!
   isDelete: Boolean!
   isFestive: String!

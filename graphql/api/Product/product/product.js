@@ -1,6 +1,11 @@
 import Product from "../../../models/Product";
 import { CURRENT_TIME } from "../../../../utils/commonUtils";
 import PFiles from "../../../models/PFiles";
+import StyleType from "../../../models/StyleType";
+import SizeType from "../../../models/SizeType";
+import MaterialType from "../../../models/MaterialType";
+import DialType from "../../../models/DialType";
+import CollectionType from "../../../models/CollectionType";
 import mongoose from "mongoose";
 
 export default {
@@ -19,6 +24,124 @@ export default {
         });
 
         return result;
+      } catch (e) {
+        console.log(e);
+        return [];
+      }
+    },
+    getProductAll: async (_, args) => {
+      const {
+        style,
+        size,
+        material,
+        dial,
+        collection,
+        limit,
+        currentPage,
+      } = args;
+
+      try {
+        const result = await Product.find({})
+          .populate({
+            model: PFiles,
+            path: "files",
+          })
+          .populate({
+            model: StyleType,
+            path: "styleType",
+          })
+          .populate({
+            model: SizeType,
+            path: "sizeType",
+          })
+          .populate({
+            model: MaterialType,
+            path: "materialType",
+          })
+          .populate({
+            model: DialType,
+            path: "dialType",
+          })
+          .populate({
+            model: CollectionType,
+            path: "collectionType",
+          });
+
+        const realResult = result.filter(
+          (data) =>
+            (style.length === 0 || style.indexOf(data.styleType.name) !== -1) &&
+            (size.length === 0 || size.indexOf(data.sizeType.name) !== -1) &&
+            (material.length === 0 ||
+              material.indexOf(data.materialType.name) !== -1) &&
+            (dial.length === 0 || dial.indexOf(data.dialType.name) !== -1) &&
+            (collection.length === 0 ||
+              collection.indexOf(data.collectionType.name) !== -1)
+        );
+
+        return realResult.slice(
+          currentPage * limit,
+          currentPage * limit + limit
+        );
+      } catch (e) {
+        console.log(e);
+        return [];
+      }
+    },
+
+    getProductAllTotalPage: async (_, args) => {
+      const {
+        style,
+        size,
+        material,
+        dial,
+        collection,
+        limit,
+        currentPage,
+      } = args;
+
+      try {
+        const result = await Product.find()
+          .populate({
+            model: PFiles,
+            path: "files",
+          })
+          .populate({
+            model: StyleType,
+            path: "styleType",
+          })
+          .populate({
+            model: SizeType,
+            path: "sizeType",
+          })
+          .populate({
+            model: MaterialType,
+            path: "materialType",
+          })
+          .populate({
+            model: DialType,
+            path: "dialType",
+          })
+          .populate({
+            model: CollectionType,
+            path: "collectionType",
+          });
+
+        const realResult = result.filter(
+          (data) =>
+            (style.length === 0 || style.indexOf(data.styleType.name) !== -1) &&
+            (size.length === 0 || size.indexOf(data.sizeType.name) !== -1) &&
+            (material.length === 0 ||
+              material.indexOf(data.materialType.name) !== -1) &&
+            (dial.length === 0 || dial.indexOf(data.dialType.name) !== -1) &&
+            (collection.length === 0 ||
+              collection.indexOf(data.collectionType.name) !== -1)
+        );
+
+        const cnt = realResult.length;
+
+        const realTotal = cnt % limit > 0 ? cnt / limit + 1 : cnt / limit;
+
+        return parseInt(realTotal);
       } catch (e) {
         console.log(e);
         return [];
