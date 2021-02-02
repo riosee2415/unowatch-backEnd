@@ -5,6 +5,7 @@ type FileReturn {
 
 type Query {
   getProduct(searchName: String!): [Product!]!
+  getProductBySelection: [Product!]!
   getOneProduct(id: String!): Product!
 }
 
