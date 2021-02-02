@@ -31,6 +31,7 @@ type Mutation {
     thumbnailPath4: String!
     thumbnailPath5: String!
     thumbnailPath6: String!
+    backImg: String!
     title1: String!
     desc1: String!
     title2: String!
@@ -47,7 +48,6 @@ type Mutation {
     isNew2020: String!
     isFestive: String!
     videoLink: String!
-    backgroundType: String!
   ): Boolean!
 
   createProduct(
@@ -71,6 +71,7 @@ type Mutation {
     thumbnailPath4: String!
     thumbnailPath5: String!
     thumbnailPath6: String!
+    backImg: String!
     innerImageList: [String!]!
     title1: String!
     desc1: String!
@@ -88,7 +89,6 @@ type Mutation {
     isNew2020: String!
     isFestive: String!
     videoLink: String!
-    backgroundType: String!
   ): Boolean!
   deleteImageProduct(id: String!, pId: String!): Boolean!
   modifyProductImage(id: String!, innerImageList: [String!]!): Boolean!

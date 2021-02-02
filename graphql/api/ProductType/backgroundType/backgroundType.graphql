@@ -1,8 +1,0 @@
-type Query {
-  getBackgroundType: [BackgroundType!]!
-}
-
-type Mutation {
-  createBackgroundType(name: String!, imagePath: String!): Boolean!
-  deleteBackgroundType(id: String!): Boolean!
-}

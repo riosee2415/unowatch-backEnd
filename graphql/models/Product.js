@@ -84,6 +84,10 @@ const Product = new Schema(
       type: String,
       required: true,
     },
+    backImg: {
+      type: String,
+      required: true,
+    },
     title1: {
       type: String,
       required: true,
