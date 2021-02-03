@@ -248,6 +248,7 @@ type Product {
   isFestive: String!
   isNew2020: String!
   createdAt: String!
+  sort: Int!
 }
 type PFiles {
   _id: ID!

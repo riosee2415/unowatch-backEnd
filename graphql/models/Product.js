@@ -167,6 +167,10 @@ const Product = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: `CollectionType`,
     },
+    sort: {
+      type: Number,
+      required: true,
+    },
   },
   {
     versionKey: false,
