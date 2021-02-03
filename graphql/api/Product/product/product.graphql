@@ -10,7 +10,7 @@ type Query {
     size: [String]
     material: [String]
     dial: [String]
-    collection: [String]
+    collection: String
     limit: Int!
     currentPage: Int!
   ): [Product!]!
@@ -19,13 +19,14 @@ type Query {
     size: [String]
     material: [String]
     dial: [String]
-    collection: [String]
+    collection: String
     limit: Int!
     currentPage: Int!
   ): Int!
   getProductBySelection: [Product!]!
+  getProductBySort: [Product!]!
   getProductByNew: [Product!]!
-  getProductDetail: [Product!]!
+  getProductDetail(id: String!): Product!
   getOneProduct(id: String!): Product!
 }
 

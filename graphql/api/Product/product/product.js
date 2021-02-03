@@ -74,8 +74,7 @@ export default {
             (material.length === 0 ||
               material.indexOf(data.materialType.name) !== -1) &&
             (dial.length === 0 || dial.indexOf(data.dialType.name) !== -1) &&
-            (collection.length === 0 ||
-              collection.indexOf(data.collectionType.name) !== -1)
+            (collection === "-" || collection === data.collectionType.name)
         );
 
         return realResult.slice(
@@ -133,8 +132,7 @@ export default {
             (material.length === 0 ||
               material.indexOf(data.materialType.name) !== -1) &&
             (dial.length === 0 || dial.indexOf(data.dialType.name) !== -1) &&
-            (collection.length === 0 ||
-              collection.indexOf(data.collectionType.name) !== -1)
+            (collection === "-" || collection === data.collectionType.name)
         );
 
         const cnt = realResult.length;
@@ -164,6 +162,23 @@ export default {
       }
     },
 
+    getProductBySort: async (_, args) => {
+      try {
+        const result = await Product.find({})
+          .populate({
+            model: PFiles,
+            path: "files",
+          })
+          .sort({ sort: -1 })
+          .limit(15);
+
+        return result;
+      } catch (e) {
+        console.log(e);
+        return [];
+      }
+    },
+
     getProductByNew: async (_, args) => {
       try {
         const result = await Product.find({
@@ -181,8 +196,11 @@ export default {
     },
 
     getProductDetail: async (_, args) => {
+      const { id } = args;
       try {
-        const result = await Product.find().populate({
+        const result = await Product.findOne({
+          _id: id,
+        }).populate({
           model: PFiles,
           path: "files",
         });
