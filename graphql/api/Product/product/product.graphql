@@ -111,6 +111,7 @@ type Mutation {
     isNew2020: String!
     isFestive: String!
     videoLink: String!
+    sort: Int!
   ): Boolean!
   deleteImageProduct(id: String!, pId: String!): Boolean!
   modifyProductImage(id: String!, innerImageList: [String!]!): Boolean!

@@ -23,7 +23,7 @@ export default {
             model: PFiles,
             path: "files",
           })
-          .sort({ sort: 1 });
+          .sort({ sort: 1, name: 1 });
 
         return result;
       } catch (e) {
@@ -218,10 +218,31 @@ export default {
       const { id } = args;
 
       try {
-        const result = await Product.findOne({ _id: id }).populate({
-          model: PFiles,
-          path: "files",
-        });
+        const result = await Product.findOne({ _id: id })
+          .populate({
+            model: PFiles,
+            path: "files",
+          })
+          .populate({
+            path: "styleType",
+            model: StyleType,
+          })
+          .populate({
+            path: "sizeType",
+            model: SizeType,
+          })
+          .populate({
+            path: "materialType",
+            model: MaterialType,
+          })
+          .populate({
+            path: "dialType",
+            model: DialType,
+          })
+          .populate({
+            path: "collectionType",
+            model: CollectionType,
+          });
 
         return result;
       } catch (e) {
@@ -380,6 +401,7 @@ export default {
         videoLink,
         isNew2020,
         isFestive,
+        sort,
       } = args;
 
       try {
@@ -425,6 +447,7 @@ export default {
           isFestive,
           createdAt: current,
           isDelete: false,
+          sort,
         });
 
         await Promise.all(
