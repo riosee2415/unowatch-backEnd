@@ -18,10 +18,12 @@ export default {
           name: {
             $regex: `.*${searchName}.*`,
           },
-        }).populate({
-          model: PFiles,
-          path: "files",
-        });
+        })
+          .populate({
+            model: PFiles,
+            path: "files",
+          })
+          .sort({ sort: 1 });
 
         return result;
       } catch (e) {
@@ -541,6 +543,26 @@ export default {
           {
             $set: {
               files: nextFiles,
+            },
+          }
+        );
+
+        return true;
+      } catch (e) {
+        console.log(e);
+        return false;
+      }
+    },
+
+    updateProductSort: async (_, args) => {
+      const { id, sort } = args;
+
+      try {
+        const result = await Product.updateOne(
+          { _id: id },
+          {
+            $set: {
+              sort: parseInt(sort),
             },
           }
         );

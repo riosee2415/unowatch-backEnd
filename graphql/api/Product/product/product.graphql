@@ -116,4 +116,5 @@ type Mutation {
   deleteProduct(id: String!): Boolean!
   pushInnerImage(pid: String!, path: String!): FileReturn!
   sliceInnerImage(pid: String!, fileId: String!): Boolean!
+  updateProductSort(id: String, sort: Int!): Boolean!
 }
