@@ -67,7 +67,8 @@ export default {
           .populate({
             model: CollectionType,
             path: "collectionType",
-          });
+          })
+          .sort({ sort: 1, name: 1 });
 
         const realResult = result.filter(
           (data) =>
@@ -125,7 +126,8 @@ export default {
           .populate({
             model: CollectionType,
             path: "collectionType",
-          });
+          })
+          .sort({ sort: 1, name: 1 });
 
         const realResult = result.filter(
           (data) =>
@@ -152,10 +154,12 @@ export default {
       try {
         const result = await Product.find({
           isFestive: "페스티브",
-        }).populate({
-          model: PFiles,
-          path: "files",
-        });
+        })
+          .populate({
+            model: PFiles,
+            path: "files",
+          })
+          .sort({ sort: 1, name: 1 });
 
         return result;
       } catch (e) {
@@ -171,7 +175,11 @@ export default {
             model: PFiles,
             path: "files",
           })
-          .sort({ sort: -1 })
+          .populate({
+            model: CollectionType,
+            path: "collectionType",
+          })
+          .sort({ sort: 1, name: 1 })
           .limit(15);
 
         return result;
@@ -185,10 +193,12 @@ export default {
       try {
         const result = await Product.find({
           isNew2020: "신상",
-        }).populate({
-          model: PFiles,
-          path: "files",
-        });
+        })
+          .populate({
+            model: PFiles,
+            path: "files",
+          })
+          .sort({ sort: 1, name: 1 });
 
         return result;
       } catch (e) {
@@ -201,11 +211,16 @@ export default {
       const { id } = args;
       try {
         const result = await Product.findOne({
-          _id: id,
-        }).populate({
-          model: PFiles,
-          path: "files",
-        });
+          code: id,
+        })
+          .populate({
+            model: PFiles,
+            path: "files",
+          })
+          .populate({
+            model: CollectionType,
+            path: "collectionType",
+          });
 
         return result;
       } catch (e) {
