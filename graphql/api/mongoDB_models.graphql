@@ -211,7 +211,6 @@ type Product {
   thumbnailPath1: String!
   brand: String!
   name: String!
-  explain: String!
   price: String!
   reference: String!
   modelCase: String!
