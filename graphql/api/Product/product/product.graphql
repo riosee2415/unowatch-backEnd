@@ -70,6 +70,7 @@ type Mutation {
     isNew2020: String!
     isFestive: String!
     videoLink: String!
+    code: String!
   ): Boolean!
 
   createProduct(
@@ -111,6 +112,7 @@ type Mutation {
     isNew2020: String!
     isFestive: String!
     videoLink: String!
+    code: String!
     sort: Int!
   ): Boolean!
   deleteImageProduct(id: String!, pId: String!): Boolean!

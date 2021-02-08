@@ -137,6 +137,10 @@ const Product = new Schema(
       type: String,
       required: true,
     },
+    code: {
+      type: String,
+      required: true,
+    },
     createdAt: {
       type: String,
       required: true,

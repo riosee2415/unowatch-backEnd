@@ -247,6 +247,7 @@ type Product {
   isDelete: Boolean!
   isFestive: String!
   isNew2020: String!
+  code: String!
   createdAt: String!
   sort: Int!
 }

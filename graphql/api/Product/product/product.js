@@ -293,6 +293,7 @@ export default {
         videoLink,
         isNew2020,
         isFestive,
+        code,
       } = args;
 
       try {
@@ -337,6 +338,7 @@ export default {
               videoLink,
               isNew2020,
               isFestive,
+              code,
             },
           }
         );
@@ -401,6 +403,7 @@ export default {
         videoLink,
         isNew2020,
         isFestive,
+        code,
         sort,
       } = args;
 
@@ -445,6 +448,7 @@ export default {
           videoLink,
           isNew2020,
           isFestive,
+          code,
           createdAt: current,
           isDelete: false,
           sort,
