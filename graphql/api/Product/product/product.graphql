@@ -61,15 +61,16 @@ type Mutation {
     desc3: String!
     content: String!
     uTitle: String!
-    styleType: String!
+    styleType: [String!]!
     sizeType: String!
-    materialType: String!
-    dialType: String!
+    materialType: [String!]!
+    dialType: [String!]!
     collectionType: String!
     isNew2020: String!
     isFestive: String!
     videoLink: String!
     code: String!
+    modelList: [String!]!
   ): Boolean!
 
   createProduct(
@@ -102,16 +103,17 @@ type Mutation {
     desc3: String!
     content: String!
     uTitle: String!
-    styleType: String!
+    styleType: [String!]!
     sizeType: String!
-    materialType: String!
-    dialType: String!
+    materialType: [String!]!
+    dialType: [String!]!
     collectionType: String!
     isNew2020: String!
     isFestive: String!
     videoLink: String!
     code: String!
     sort: Int!
+    modelList: [String!]!
   ): Boolean!
   deleteImageProduct(id: String!, pId: String!): Boolean!
   modifyProductImage(id: String!, innerImageList: [String!]!): Boolean!

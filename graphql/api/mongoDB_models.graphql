@@ -236,10 +236,10 @@ type Product {
   desc3: String!
   content: String!
   uTitle: String!
-  styleType: StyleType!
+  styleType: [StyleType!]!
   sizeType: SizeType!
-  materialType: MaterialType!
-  dialType: DialType!
+  materialType: [MaterialType!]!
+  dialType: [DialType!]!
   collectionType: CollectionType!
   backImg: String!
   videoLink: String!
@@ -248,9 +248,11 @@ type Product {
   isNew2020: String!
   code: String!
   createdAt: String!
+  modelList: [Product!]!
   sort: Int!
 }
 type PFiles {
   _id: ID!
   filePath: String!
+  sort: Int!
 }

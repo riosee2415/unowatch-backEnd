@@ -8,6 +8,12 @@ import DialType from "../../../models/DialType";
 import CollectionType from "../../../models/CollectionType";
 import mongoose from "mongoose";
 
+const checkFilterHandler = (array1, array2) => {
+  const filter = array2.filter((data) => !array1.includes(data.name));
+
+  return filter.length !== array2.length;
+};
+
 export default {
   Query: {
     getProduct: async (_, args) => {
@@ -22,6 +28,20 @@ export default {
           .populate({
             model: PFiles,
             path: "files",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
+          })
+          .populate({
+            model: Product,
+            path: "modelList",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
           })
           .sort({ sort: 1, name: 1 });
 
@@ -47,6 +67,11 @@ export default {
           .populate({
             model: PFiles,
             path: "files",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
           })
           .populate({
             model: StyleType,
@@ -68,15 +93,24 @@ export default {
             model: CollectionType,
             path: "collectionType",
           })
+          .populate({
+            model: Product,
+            path: "modelList",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
+          })
           .sort({ sort: 1, name: 1 });
 
         const realResult = result.filter(
           (data) =>
-            (style.length === 0 || style.indexOf(data.styleType.name) !== -1) &&
+            (style.length === 0 || checkFilterHandler(style, data.styleType)) &&
             (size.length === 0 || size.indexOf(data.sizeType.name) !== -1) &&
             (material.length === 0 ||
-              material.indexOf(data.materialType.name) !== -1) &&
-            (dial.length === 0 || dial.indexOf(data.dialType.name) !== -1) &&
+              checkFilterHandler(material, data.materialType)) &&
+            (dial.length === 0 || checkFilterHandler(dial, data.dialType)) &&
             (collection === "-" || collection === data.collectionType.name)
         );
 
@@ -106,6 +140,11 @@ export default {
           .populate({
             model: PFiles,
             path: "files",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
           })
           .populate({
             model: StyleType,
@@ -127,15 +166,24 @@ export default {
             model: CollectionType,
             path: "collectionType",
           })
+          .populate({
+            model: Product,
+            path: "modelList",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
+          })
           .sort({ sort: 1, name: 1 });
 
         const realResult = result.filter(
           (data) =>
-            (style.length === 0 || style.indexOf(data.styleType.name) !== -1) &&
+            (style.length === 0 || checkFilterHandler(style, data.styleType)) &&
             (size.length === 0 || size.indexOf(data.sizeType.name) !== -1) &&
             (material.length === 0 ||
-              material.indexOf(data.materialType.name) !== -1) &&
-            (dial.length === 0 || dial.indexOf(data.dialType.name) !== -1) &&
+              checkFilterHandler(material, data.materialType)) &&
+            (dial.length === 0 || checkFilterHandler(dial, data.dialType)) &&
             (collection === "-" || collection === data.collectionType.name)
         );
 
@@ -158,6 +206,20 @@ export default {
           .populate({
             model: PFiles,
             path: "files",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
+          })
+          .populate({
+            model: Product,
+            path: "modelList",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
           })
           .sort({ sort: 1, name: 1 });
 
@@ -174,10 +236,24 @@ export default {
           .populate({
             model: PFiles,
             path: "files",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
           })
           .populate({
             model: CollectionType,
             path: "collectionType",
+          })
+          .populate({
+            model: Product,
+            path: "modelList",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
           })
           .sort({ sort: 1, name: 1 })
           .limit(15);
@@ -197,6 +273,20 @@ export default {
           .populate({
             model: PFiles,
             path: "files",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
+          })
+          .populate({
+            model: Product,
+            path: "modelList",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
           })
           .sort({ sort: 1, name: 1 });
 
@@ -216,10 +306,28 @@ export default {
           .populate({
             model: PFiles,
             path: "files",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
           })
           .populate({
             model: CollectionType,
             path: "collectionType",
+          })
+          .populate({
+            model: Product,
+            path: "modelList",
+            populate: {
+              model: CollectionType,
+              path: "collectionType",
+            },
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
           });
 
         return result;
@@ -237,6 +345,11 @@ export default {
           .populate({
             model: PFiles,
             path: "files",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
           })
           .populate({
             path: "styleType",
@@ -257,6 +370,15 @@ export default {
           .populate({
             path: "collectionType",
             model: CollectionType,
+          })
+          .populate({
+            model: Product,
+            path: "modelList",
+            options: {
+              sort: {
+                sort: 1,
+              },
+            },
           });
 
         return result;
@@ -308,9 +430,24 @@ export default {
         isNew2020,
         isFestive,
         code,
+        modelList,
       } = args;
 
       try {
+        const newModelList = [];
+
+        await Promise.all(
+          modelList.map(async (code) => {
+            const product = await Product.findOne({ code });
+
+            if (product) {
+              const productId = mongoose.Types.ObjectId(product._id);
+
+              newModelList.push(productId);
+            }
+          })
+        );
+
         const result = await Product.updateOne(
           { _id: id },
           {
@@ -352,6 +489,7 @@ export default {
               isNew2020,
               isFestive,
               code,
+              modelList: newModelList,
             },
           }
         );
@@ -417,10 +555,25 @@ export default {
         isFestive,
         code,
         sort,
+        modelList,
       } = args;
 
       try {
         const current = await CURRENT_TIME();
+
+        const newModelList = [];
+
+        await Promise.all(
+          modelList.map(async (code) => {
+            const product = await Product.findOne({ code });
+
+            if (product) {
+              const productId = mongoose.Types.ObjectId(product._id);
+
+              newModelList.push(productId);
+            }
+          })
+        );
 
         const result = await Product.create({
           thumbnailPath1,
@@ -463,6 +616,7 @@ export default {
           createdAt: current,
           isDelete: false,
           sort,
+          modelList: newModelList,
         });
 
         await Promise.all(
@@ -550,19 +704,19 @@ export default {
       const { pid, path } = args;
 
       try {
+        const current = await CURRENT_TIME();
+
         const parent = await Product.findOne({ _id: pid });
 
         const fileResult = await PFiles.create({
           filePath: path,
+          sort: parent.files.length + 1,
         });
 
         const obFileId = mongoose.Types.ObjectId(fileResult._id);
 
         parent.files.push(obFileId);
         parent.save();
-
-        console.log(fileResult._id);
-        console.log(path);
 
         return {
           _id: fileResult._id,

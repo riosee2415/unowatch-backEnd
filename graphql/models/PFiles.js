@@ -8,6 +8,11 @@ const PFiles = new Schema(
       type: String,
       required: true,
     },
+    sort: {
+      type: Number,
+      required: false,
+      default: 1,
+    },
   },
   {
     versionKey: false,

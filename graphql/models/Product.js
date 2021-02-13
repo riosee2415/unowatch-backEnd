@@ -119,7 +119,7 @@ const Product = new Schema(
     },
     videoLink: {
       type: String,
-      required: true,
+      required: false,
     },
     isDelete: {
       type: Boolean,
@@ -148,26 +148,38 @@ const Product = new Schema(
         ref: `PFiles`,
       },
     ],
-    styleType: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: `StyleType`,
-    },
+    styleType: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: `StyleType`,
+      },
+    ],
     sizeType: {
       type: mongoose.Schema.Types.ObjectId,
       ref: `SizeType`,
     },
-    materialType: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: `MaterialType`,
-    },
-    dialType: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: `DialType`,
-    },
+    materialType: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: `MaterialType`,
+      },
+    ],
+    dialType: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: `DialType`,
+      },
+    ],
     collectionType: {
       type: mongoose.Schema.Types.ObjectId,
       ref: `CollectionType`,
     },
+    modelList: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: `Product`,
+      },
+    ],
     sort: {
       type: Number,
       required: true,
