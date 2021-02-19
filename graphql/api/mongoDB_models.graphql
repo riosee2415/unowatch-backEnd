@@ -234,7 +234,7 @@ type Product {
   desc2: String!
   title3: String!
   desc3: String!
-  content: String!
+  content: String
   uTitle: String!
   styleType: [StyleType!]!
   sizeType: SizeType!

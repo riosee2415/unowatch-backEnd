@@ -111,7 +111,7 @@ const Product = new Schema(
     },
     content: {
       type: String,
-      required: true,
+      required: false,
     },
     uTitle: {
       type: String,
